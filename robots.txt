@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.smkperformancelab.com/sitemap.xml
+Sitemap: https://101dynolab.ru/sitemap.xml

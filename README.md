@@ -1,2 +1,3 @@
-# smkperformancelab-site
-smkperformancelab-site
+# 101dynolab-site
+
+Static website for 101DYNOLAB.
