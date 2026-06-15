@@ -293,27 +293,27 @@
         .smk-chat-header{position:relative;padding-right:92px}
         .smk-chat-close{position:absolute;top:12px;right:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#f4f7fb;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:600;cursor:pointer}
         .smk-chat-close:hover{background:rgba(255,255,255,.14)}
-        .smk-chat-launcher.smk-chat-launcher-desktop{width:132px;height:132px;padding:0;border:0;border-radius:50%;background:transparent;box-shadow:0 20px 42px rgba(0,0,0,.42);overflow:visible;isolation:isolate;animation:smkLauncherFloat 4.8s ease-in-out infinite}
+        .smk-chat-launcher.smk-chat-launcher-desktop{width:176px;height:132px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible;isolation:isolate;animation:smkLauncherFloat 4.8s ease-in-out infinite}
         .smk-chat-launcher.smk-chat-launcher-desktop:hover{transform:translateY(-2px) scale(1.04)}
         .smk-chat-launcher.smk-chat-launcher-desktop:hover .smk-chat-launcher-tooltip{opacity:1;transform:translateX(-50%) translateY(0)}
-        .smk-chat-launcher-orb{position:relative;display:block;width:100%;height:100%;border-radius:50%}
-        .smk-chat-launcher-orb::before,.smk-chat-launcher-orb::after{content:"";position:absolute;inset:-4px;border-radius:50%;pointer-events:none}
-        .smk-chat-launcher-orb::before{background:radial-gradient(circle at 50% 52%, rgba(255,208,102,.62) 0%, rgba(255,208,102,.22) 26%, rgba(255,208,102,0) 60%),conic-gradient(from 0deg, rgba(255,209,102,.08), rgba(255,209,102,.36), rgba(214,40,40,.2), rgba(255,209,102,.08));filter:blur(9px);animation:smkLauncherSpin 9s linear infinite}
-        .smk-chat-launcher-orb::after{inset:8px;background:radial-gradient(circle at 34% 24%, rgba(255,255,255,.42), rgba(255,255,255,0) 34%),radial-gradient(circle at 50% 60%, rgba(255,210,120,.28), rgba(255,210,120,0) 54%);mix-blend-mode:screen;filter:blur(3px);animation:smkLauncherPulse 3.8s ease-in-out infinite}
-        .smk-chat-launcher-art{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;filter:drop-shadow(0 0 18px rgba(240,165,0,.36));transform:scale(1.15);transform-origin:center}
+        .smk-chat-launcher-orb{position:relative;display:block;width:100%;height:100%;border-radius:0}
+        .smk-chat-launcher-orb::before,.smk-chat-launcher-orb::after{content:"";position:absolute;inset:-12px;border-radius:44% 56% 54% 46%/58% 62% 38% 42%;pointer-events:none}
+        .smk-chat-launcher-orb::before{background:radial-gradient(ellipse at 54% 50%, rgba(255,208,102,.58) 0%, rgba(255,208,102,.26) 34%, rgba(255,208,102,0) 70%),radial-gradient(ellipse at 14% 72%, rgba(214,40,40,.34), rgba(214,40,40,0) 42%);filter:blur(12px);animation:smkLauncherPulse 4.2s ease-in-out infinite}
+        .smk-chat-launcher-orb::after{inset:2px;background:radial-gradient(ellipse at 34% 24%, rgba(255,255,255,.32), rgba(255,255,255,0) 32%),radial-gradient(ellipse at 54% 62%, rgba(255,210,120,.18), rgba(255,210,120,0) 58%);mix-blend-mode:screen;filter:blur(3px);animation:smkLauncherPulse 3.8s ease-in-out infinite}
+        .smk-chat-launcher-art{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;filter:drop-shadow(0 0 18px rgba(240,165,0,.46))}
         .smk-chat-launcher-tooltip{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%) translateY(6px);padding:8px 12px;border-radius:999px;background:rgba(11,13,16,.94);color:#f4f7fb;border:1px solid rgba(240,165,0,.24);box-shadow:0 10px 28px rgba(0,0,0,.28);white-space:nowrap;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease}
         @keyframes smkLauncherSpin{from{transform:rotate(0deg) scale(.98)}to{transform:rotate(360deg) scale(1.02)}}
         @keyframes smkLauncherPulse{0%,100%{opacity:.62;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
         @keyframes smkLauncherFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
         @media (max-width:960px){
-          .smk-chat-launcher{width:118px !important;height:118px !important;padding:0 !important;border:0 !important;border-radius:50% !important;background:transparent !important;box-shadow:0 14px 28px rgba(0,0,0,.32) !important;overflow:visible !important;bottom:88px !important}
+          .smk-chat-launcher{width:158px !important;height:118px !important;padding:0 !important;border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;overflow:visible !important;bottom:88px !important}
           .smk-chat-widget{width:min(320px,calc(100vw - 24px)) !important;max-width:min(320px,calc(100vw - 24px)) !important;height:min(420px,calc(100vh - 180px)) !important;max-height:min(420px,calc(100vh - 180px)) !important;right:12px !important;left:auto !important;bottom:222px !important;border-radius:20px !important}
           .smk-chat-header{padding-right:88px}
-          .smk-chat-launcher-orb-mobile{position:relative;display:block;width:100%;height:100%;border-radius:50%}
+          .smk-chat-launcher-orb-mobile{position:relative;display:block;width:100%;height:100%;border-radius:0}
           .smk-chat-launcher-orb-mobile::before,.smk-chat-launcher-orb-mobile::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
-          .smk-chat-launcher-orb-mobile::before{inset:-3px;background:radial-gradient(circle at 50% 52%, rgba(255,208,102,.42) 0%, rgba(255,208,102,.12) 28%, rgba(255,208,102,0) 62%),conic-gradient(from 0deg, rgba(255,209,102,.04), rgba(255,209,102,.22), rgba(214,40,40,.12), rgba(255,209,102,.04));filter:blur(6px);animation:smkLauncherSpin 11s linear infinite}
-          .smk-chat-launcher-orb-mobile::after{inset:7px;background:radial-gradient(circle at 34% 24%, rgba(255,255,255,.32), rgba(255,255,255,0) 34%),radial-gradient(circle at 50% 60%, rgba(255,210,120,.2), rgba(255,210,120,0) 54%);filter:blur(2px);animation:smkLauncherPulse 4.2s ease-in-out infinite}
-          .smk-chat-launcher-orb-mobile .smk-chat-launcher-art{filter:drop-shadow(0 0 12px rgba(240,165,0,.26))}
+          .smk-chat-launcher-orb-mobile::before{inset:-8px;background:radial-gradient(ellipse at 54% 50%, rgba(255,208,102,.44) 0%, rgba(255,208,102,.16) 36%, rgba(255,208,102,0) 72%),radial-gradient(ellipse at 14% 72%, rgba(214,40,40,.24), rgba(214,40,40,0) 42%);filter:blur(8px);animation:smkLauncherPulse 4.2s ease-in-out infinite}
+          .smk-chat-launcher-orb-mobile::after{inset:2px;background:radial-gradient(ellipse at 34% 24%, rgba(255,255,255,.22), rgba(255,255,255,0) 34%),radial-gradient(ellipse at 54% 62%, rgba(255,210,120,.16), rgba(255,210,120,0) 58%);filter:blur(2px);animation:smkLauncherPulse 4.2s ease-in-out infinite}
+          .smk-chat-launcher-orb-mobile .smk-chat-launcher-art{filter:drop-shadow(0 0 12px rgba(240,165,0,.34))}
           .smk-chat-launcher-tooltip{display:none}
         }`;
       document.head.appendChild(widgetCss);
