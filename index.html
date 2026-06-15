@@ -38,7 +38,8 @@
     .nav { position:sticky; top:0; z-index:100; backdrop-filter:blur(10px); background:rgba(11,13,16,.82); border-bottom:1px solid var(--line); }
     .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:14px 0; }
     .brand { display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.02em; }
-    .brand-badge { width:42px; height:42px; border-radius:12px; border:1px solid rgba(240,165,0,.35); background:linear-gradient(135deg, rgba(240,165,0,.16), rgba(255,255,255,.03)); display:grid; place-items:center; color:var(--accent); font-weight:800; }
+    .brand-badge { width:42px; height:42px; flex:0 0 42px; border-radius:12px; border:1px solid rgba(240,165,0,.35); background:linear-gradient(135deg, rgba(240,165,0,.16), rgba(255,255,255,.03)); display:grid; place-items:center; overflow:hidden; }
+    .brand-badge img { width:34px; height:34px; object-fit:contain; }
     .nav-side { display:flex; align-items:center; gap:18px; flex-wrap:wrap; justify-content:flex-end; }
     .nav-links { display:flex; gap:18px; flex-wrap:wrap; color:var(--muted); font-size:.95rem; }
     .lang-switch { display:inline-flex; align-items:center; gap:10px; padding:7px 10px; border:1px solid rgba(240,165,0,.18); border-radius:12px; background:rgba(255,255,255,.03); }
@@ -85,7 +86,7 @@
 <body>
   <nav class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="#top"><div class="brand-badge">101</div><div>101DYNOLAB</div></a>
+      <a class="brand" href="#top"><div class="brand-badge"><img src="images/logo-101-header.png" alt="" /></div><div>101DYNOLAB</div></a>
       <div class="nav-side">
         <div class="nav-links">
           <a href="#about" data-i18n="nav.about">О нас</a>
