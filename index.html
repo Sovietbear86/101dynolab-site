@@ -293,7 +293,7 @@
         .smk-chat-header{position:relative;padding-right:92px}
         .smk-chat-close{position:absolute;top:12px;right:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#f4f7fb;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:600;cursor:pointer}
         .smk-chat-close:hover{background:rgba(255,255,255,.14)}
-        .smk-chat-launcher.smk-chat-launcher-desktop{width:176px;height:132px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible;isolation:isolate;animation:smkLauncherFloat 4.8s ease-in-out infinite}
+        .smk-chat-launcher.smk-chat-launcher-desktop{width:211px;height:158px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible;isolation:isolate;animation:smkLauncherFloat 4.8s ease-in-out infinite}
         .smk-chat-launcher.smk-chat-launcher-desktop:hover{transform:translateY(-2px) scale(1.04)}
         .smk-chat-launcher.smk-chat-launcher-desktop:hover .smk-chat-launcher-tooltip{opacity:1;transform:translateX(-50%) translateY(0)}
         .smk-chat-launcher-orb{position:relative;display:block;width:100%;height:100%;border-radius:0}
@@ -306,7 +306,7 @@
         @keyframes smkLauncherPulse{0%,100%{opacity:.62;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
         @keyframes smkLauncherFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
         @media (max-width:960px){
-          .smk-chat-launcher{width:158px !important;height:118px !important;padding:0 !important;border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;overflow:visible !important;bottom:88px !important}
+          .smk-chat-launcher{width:190px !important;height:142px !important;padding:0 !important;border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;overflow:visible !important;left:auto !important;right:calc(env(safe-area-inset-right, 0px) + clamp(10px, 3vw, 18px)) !important;bottom:calc(env(safe-area-inset-bottom, 0px) + clamp(10px, 3vw, 18px)) !important;transform:none !important;margin:0 !important}
           .smk-chat-widget{width:min(320px,calc(100vw - 24px)) !important;max-width:min(320px,calc(100vw - 24px)) !important;height:min(420px,calc(100vh - 180px)) !important;max-height:min(420px,calc(100vh - 180px)) !important;right:12px !important;left:auto !important;bottom:222px !important;border-radius:20px !important}
           .smk-chat-header{padding-right:88px}
           .smk-chat-launcher-orb-mobile{position:relative;display:block;width:100%;height:100%;border-radius:0}
@@ -360,8 +360,8 @@
         const desktop = mq.matches;
         launcher.classList.toggle("smk-chat-launcher-desktop", desktop);
         launcher.innerHTML = desktop
-          ? '<span class="smk-chat-launcher-orb"><img src="images/widget-launcher-orb-101-transparent.png" alt="" class="smk-chat-launcher-art" /><span class="smk-chat-launcher-tooltip"></span></span>'
-          : '<span class="smk-chat-launcher-orb smk-chat-launcher-orb-mobile"><img src="images/widget-launcher-orb-101-transparent.png" alt="" class="smk-chat-launcher-art" /></span>';
+          ? '<span class="smk-chat-launcher-orb"><img src="images/widget-launcher-orb-101-ai-assist-adapted.png" alt="" class="smk-chat-launcher-art" /><span class="smk-chat-launcher-tooltip"></span></span>'
+          : '<span class="smk-chat-launcher-orb smk-chat-launcher-orb-mobile"><img src="images/widget-launcher-orb-101-ai-assist-adapted.png" alt="" class="smk-chat-launcher-art" /></span>';
         if (!header.querySelector(".smk-chat-close")) {
           const btn = document.createElement("button");
           btn.className = "smk-chat-close";
