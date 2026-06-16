@@ -40,6 +40,7 @@
     .brand { display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.02em; }
     .brand-badge { width:42px; height:42px; flex:0 0 42px; border-radius:12px; border:1px solid rgba(240,165,0,.35); background:linear-gradient(135deg, rgba(240,165,0,.16), rgba(255,255,255,.03)); display:grid; place-items:center; overflow:hidden; }
     .brand-badge img { width:34px; height:34px; object-fit:contain; }
+    .menu-toggle { display:none; align-items:center; justify-content:center; min-height:42px; padding:0 16px; border-radius:12px; border:1px solid rgba(240,165,0,.24); background:rgba(255,255,255,.03); color:var(--text); }
     .nav-side { display:flex; align-items:center; gap:18px; flex-wrap:wrap; justify-content:flex-end; }
     .nav-links { display:flex; gap:18px; flex-wrap:wrap; color:var(--muted); font-size:.95rem; }
     .social-links { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
@@ -99,11 +100,18 @@
     .storefront-wrap { margin-top:18px; }
     .storefront img { aspect-ratio:1448/1086; object-fit:contain; background:var(--panel); }
     .storefront figcaption { padding:12px 14px 16px; font-size:.95rem; }
+    .seo-grid { display:grid; grid-template-columns:1.08fr .92fr; gap:18px; margin-top:18px; }
+    .certification-card { padding:0; overflow:hidden; }
+    .certification-card img { aspect-ratio:4/3; object-fit:cover; }
+    .certification-copy { padding:22px; }
+    .certification-copy h3 { margin:0 0 10px; font-size:1.12rem; }
+    .certification-copy p { margin:0 0 12px; color:var(--muted); }
+    .certification-copy p:last-child { margin-bottom:0; }
     .footer-inner { display:flex; align-items:flex-start; justify-content:space-between; gap:24px; }
     .footer-copy { max-width:560px; }
     .footer-social { display:grid; gap:10px; justify-items:end; }
     footer { padding:28px 0 48px; font-size:.93rem; }
-    @media (max-width:960px) { .nav-inner,.nav-side,.footer-inner,.booking-option { flex-direction:column; align-items:flex-start; } .nav-side { width:100%; gap:14px; } .nav-links,.social-links,.cta-actions,.footer-social { width:100%; justify-content:flex-start; } .footer-social { justify-items:start; } .lang-switch { width:100%; justify-content:space-between; } .hero-grid,.section-head,.contact,.cards { grid-template-columns:1fr; } .gallery { grid-template-columns:1fr; } .span-6,.span-4 { grid-column:auto; } .btn-social { min-width:0; } }
+    @media (max-width:960px) { .nav-inner { flex-wrap:wrap; } .menu-toggle { display:inline-flex; margin-left:auto; } .nav-side,.footer-inner,.booking-option { flex-direction:column; align-items:flex-start; } .nav-side { display:none; width:100%; gap:14px; padding-top:6px; } .nav-side.is-open { display:flex; } .nav-links,.social-links,.cta-actions,.footer-social { width:100%; justify-content:flex-start; } .footer-social { justify-items:start; } .lang-switch { width:100%; justify-content:space-between; } .hero-grid,.section-head,.contact,.cards,.seo-grid { grid-template-columns:1fr; } .gallery { grid-template-columns:1fr; } .span-6,.span-4 { grid-column:auto; } .btn-social { min-width:0; } }
     @media (max-width:640px) { .contact-cta { padding:20px; } .btn-social { width:100%; justify-content:center; } .social-link--footer { --social-size:44px; } }
   </style>
 </head>
@@ -122,7 +130,8 @@
   <nav class="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top"><div class="brand-badge"><img src="images/logo-101-header.png" alt="" /></div><div>101DYNOLAB</div></a>
-      <div class="nav-side">
+      <button class="menu-toggle btn" type="button" aria-expanded="false" aria-controls="site-nav-panel" data-i18n="nav.menu">Меню</button>
+      <div class="nav-side" id="site-nav-panel">
         <div class="nav-links">
           <a href="#about" data-i18n="nav.about">О нас</a>
           <a href="#services" data-i18n="nav.services">Услуги</a>
@@ -305,6 +314,16 @@
         <p style="margin-top:0" data-i18n="seo.p1">Мы специализируемся на замерах на диностенде, диагностике с поддержкой AFR и рабочих процессах настройки ECU для современных спортбайков, нейкедов и туристических мотоциклов. Мастерская готовится к решениям на базе Woolich Racing, live data logging и ECU-out flashing для платформ Yamaha, BMW, Suzuki, KTM, Ducati и Honda.</p>
         <p style="margin-bottom:0" data-i18n="seo.p2">Если вам нужна настройка мотоцикла на диностенде в Москве, прошивка ECU в России или диагностика производительности модифицированного байка, свяжитесь с 101DYNOLAB через сайт.</p>
       </div>
+      <div class="seo-grid">
+        <div class="contact-card certification-copy">
+          <h3 data-i18n="seo.certTitle">Сертифицированные мастера Woolich Racing</h3>
+          <p data-i18n="seo.certCopy1">Команда 101DYNOLAB проходит профильное обучение и работает по стандартам Woolich Racing для современных ECU-платформ.</p>
+          <p data-i18n="seo.certCopy2">Это помогает выстраивать предсказуемый процесс диагностики, настройки и подготовки мотоциклов к профессиональной калибровке.</p>
+        </div>
+        <figure class="contact-card certification-card">
+          <img src="images/woolich-certification.jpg" data-i18n-alt="alts.certification" alt="Woolich Racing certification for 101DYNOLAB" />
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -329,7 +348,7 @@
     const DYNOLAB_I18N = {
       en: {
         meta:{title:"101DYNOLAB - Motorcycle Dyno & ECU Tuning in Moscow",desc:"Motorcycle dyno tuning, ECU flashing and diagnostics in Moscow. Woolich Racing ECU tuning, AFR tuning, performance upgrades.",ogt:"101DYNOLAB - Motorcycle Dyno & ECU Tuning",ogd:"Professional motorcycle dyno tuning and ECU calibration in Moscow."},
-        lang:{label:"Language"}, nav:{about:"About",services:"Services",gallery:"Gallery",booking:"Book",contact:"Contact"},
+        lang:{label:"Language"}, nav:{about:"About",services:"Services",gallery:"Gallery",booking:"Book",contact:"Contact",menu:"Menu"},
         booking:{title:"Book"},
         social:{groupLabel:"101 Dynolab social links",footerTitle:"Follow Us",ctaCopy:"Choose the most convenient way to book a dyno run, ECU tuning, or consultation.",telegramHint:"Telegram — quick reply from the workshop",vkHint:"VK — booking via community messages",assistantHint:"Assistant — service guidance and a preliminary consultation",telegram:"Telegram",vk:"VK",telegramCta:"Book via Telegram",vkCta:"Book via VK",assistantCta:"Open Assistant"},
         hero:{eyebrow:"Motorcycle Dyno & ECU Tuning",title:"Motorcycle Dyno & ECU Tuning in Moscow",copy:"Independent workshop in Moscow focused on dyno testing, performance diagnostics, and ECU calibration for modern sport, naked, touring, and custom motorcycles.",cta1:"Contact Us",cta2:"View Workshop"},
@@ -339,14 +358,14 @@
         services:{title:"Services",copy:"Practical performance services for riders who want numbers, not guesses.",c1t:"Dyno Power Runs",c1c:"Measure horsepower and torque, compare before/after, and verify real output.",c2t:"Performance Diagnostics",c2c:"Detect fueling, response, and delivery issues under load.",c3t:"Fuel Map Optimization",c3c:"Calibration workflow prepared for efficient AFR-based tuning sessions.",c4t:"ECU Flash Preparation",c4c:"Professional setup for modern ECU tuning across selected motorcycle platforms."},
         gallery:{title:"Workshop & Dyno Gallery",copy:"Real workshop photos, dyno runs, and current motorcycle projects."},
         contact:{title:"Contact",copy:"Workshop based in Moscow, Russia. Professional motorcycle dyno testing and ECU tuning services.",bizL:"Business Name",bizV:"101DYNOLAB",addrL:"Address",addrV:"г. Москва, ул. Салтыковская 51",specL:"Specialization",specV:"Motorcycle dyno testing, diagnostics, and ECU tuning",emailL:"Email",phoneL:"Phone",phoneName:"Pavel",telegramL:"Telegram",vkL:"VK",tradeL:"Trade Inquiries",tradeV:"Professional dyno and ECU tuning partnerships welcome",caption:"Workshop entrance: г. Москва, ул. Салтыковская 51."},
-        seo:{title:"Motorcycle Tuning in Moscow",copy:"101DYNOLAB provides professional motorcycle dyno tuning, ECU flashing, and diagnostics in Moscow, Russia.",p1:"We specialize in motorcycle dyno runs, AFR-supported diagnostics, and ECU tuning workflows for modern sportbikes, naked bikes, and touring motorcycles. Our workshop is preparing for Woolich Racing based tuning solutions, live data logging, and ECU-out flashing for selected Yamaha, BMW, Suzuki, KTM, Ducati, and Honda platforms.",p2:"Riders looking for motorcycle dyno tuning in Moscow, ECU flashing in Russia, or performance diagnostics for modified bikes can contact 101DYNOLAB directly through the website."},
+        seo:{title:"Motorcycle Tuning in Moscow",copy:"101DYNOLAB provides professional motorcycle dyno tuning, ECU flashing, and diagnostics in Moscow, Russia.",p1:"We specialize in motorcycle dyno runs, AFR-supported diagnostics, and ECU tuning workflows for modern sportbikes, naked bikes, and touring motorcycles. Our workshop is preparing for Woolich Racing based tuning solutions, live data logging, and ECU-out flashing for selected Yamaha, BMW, Suzuki, KTM, Ducati, and Honda platforms.",p2:"Riders looking for motorcycle dyno tuning in Moscow, ECU flashing in Russia, or performance diagnostics for modified bikes can contact 101DYNOLAB directly through the website.",certTitle:"Woolich Racing certified technicians",certCopy1:"The 101DYNOLAB team completes focused training and follows Woolich Racing standards for modern ECU platforms.",certCopy2:"That gives us a more predictable workflow for diagnostics, tuning, and motorcycle preparation before professional calibration."},
         footer:"© 2026 101DYNOLAB. Motorcycle Dyno & ECU Tuning.",
-        alts:{hero:"Motorcycle on dyno at 101DYNOLAB",room:"Dyno room and motorcycle setup",graph:"Dyno graph on screen",triumph:"Triumph motorcycle on dyno",laptop:"Laptop showing dyno result",project1:"Workshop motorcycle project",bagger:"Custom motorcycle project",moto5:"Ducati motorcycle in workshop",bmw1:"BMW project motorcycle in workshop",bmw2:"BMW motorcycle project detail",bmw3:"BMW motorcycle in 101DYNOLAB",ducati1:"Ducati motorcycle project in workshop",ducati2:"Ducati motorcycle detail at 101DYNOLAB",storefront:"101DYNOLAB storefront"},
+        alts:{hero:"Motorcycle on dyno at 101DYNOLAB",room:"Dyno room and motorcycle setup",graph:"Dyno graph on screen",triumph:"Triumph motorcycle on dyno",laptop:"Laptop showing dyno result",project1:"Workshop motorcycle project",bagger:"Custom motorcycle project",moto5:"Ducati motorcycle in workshop",bmw1:"BMW project motorcycle in workshop",bmw2:"BMW motorcycle project detail",bmw3:"BMW motorcycle in 101DYNOLAB",ducati1:"Ducati motorcycle project in workshop",ducati2:"Ducati motorcycle detail at 101DYNOLAB",storefront:"101DYNOLAB storefront",certification:"Woolich Racing certification for 101DYNOLAB"},
         widget:{title:"101DYNOLAB",subtitle:"Dyno stand • ECU • Booking",placeholder:"Type your message...",welcome:"Hello! I can help with motorcycle setup, tuning options, and booking a convenient slot.",tooltip:"Call assistant",label:"Open assistant",close:"Hide",chips:["Tuning","Dyno run","Consultation"]}
       },
       ru: {
         meta:{title:"101DYNOLAB - Диностенд и настройка ECU в Москве",desc:"Настройка мотоциклов на диностенде, прошивка ECU и диагностика в Москве. Woolich Racing, AFR-настройка и повышение производительности.",ogt:"101DYNOLAB - Диностенд и настройка ECU",ogd:"Профессиональная настройка мотоциклов на диностенде и калибровка ECU в Москве."},
-        lang:{label:"Язык"}, nav:{about:"О нас",services:"Услуги",gallery:"Галерея",booking:"Записаться",contact:"Контакты"},
+        lang:{label:"Язык"}, nav:{about:"О нас",services:"Услуги",gallery:"Галерея",booking:"Записаться",contact:"Контакты",menu:"Меню"},
         booking:{title:"Записаться"},
         social:{groupLabel:"Социальные ссылки 101 Dynolab",footerTitle:"Мы в соцсетях",ctaCopy:"Выберите удобный способ связи для записи на диностенд, настройку ECU или консультацию.",telegramHint:"Telegram — быстрый ответ мастера",vkHint:"VK — запись через сообщество",assistantHint:"Ассистент — подбор услуги и предварительная консультация",telegram:"Telegram",vk:"VK",telegramCta:"Записаться в Telegram",vkCta:"Записаться в VK",assistantCta:"Открыть ассистента"},
         hero:{eyebrow:"Диностенд и настройка ECU для мотоциклов",title:"Диностенд и настройка ECU в Москве",copy:"Независимая мастерская в Москве, специализирующаяся на тестах на диностенде, диагностике производительности и калибровке ECU для современных спортбайков, нейкедов, туристических и кастомных мотоциклов.",cta1:"Связаться с нами",cta2:"Посмотреть мастерскую"},
@@ -356,14 +375,14 @@
         services:{title:"Услуги",copy:"Практические решения по производительности для тех, кому нужны цифры, а не догадки.",c1t:"Замеры мощности на диностенде",c1c:"Измерение мощности и крутящего момента, сравнение до и после, проверка реальной отдачи.",c2t:"Диагностика производительности",c2c:"Поиск проблем со смесью, откликом и подачей под нагрузкой.",c3t:"Оптимизация топливных карт",c3c:"Рабочий процесс подготовлен для эффективных сессий настройки на основе AFR.",c4t:"Подготовка к прошивке ECU",c4c:"Профессиональная база для настройки современных ECU на выбранных платформах мотоциклов."},
         gallery:{title:"Галерея мастерской и диностенда",copy:"Реальные фотографии мастерской, заездов на диностенде и текущих проектов."},
         contact:{title:"Контакты",copy:"Мастерская в Москве, Россия. Профессиональные услуги по диностенду и настройке ECU для мотоциклов.",bizL:"Название",bizV:"101DYNOLAB",addrL:"Адрес",addrV:"г. Москва, ул. Салтыковская 51",specL:"Специализация",specV:"Мото-диностенд, диагностика и настройка ECU",emailL:"Email",phoneL:"Телефон",phoneName:"Павел",telegramL:"Telegram",vkL:"VK",tradeL:"Партнерские запросы",tradeV:"Открыты к профессиональному сотрудничеству по диностенду и настройке ECU",caption:"Вход в мастерскую: г. Москва, ул. Салтыковская 51."},
-        seo:{title:"Настройка мотоциклов в Москве",copy:"101DYNOLAB предлагает профессиональную настройку мотоциклов на диностенде, прошивку ECU и диагностику в Москве.",p1:"Мы специализируемся на замерах на диностенде, диагностике с поддержкой AFR и рабочих процессах настройки ECU для современных спортбайков, нейкедов и туристических мотоциклов. Мастерская готовится к решениям на базе Woolich Racing, live data logging и ECU-out flashing для платформ Yamaha, BMW, Suzuki, KTM, Ducati и Honda.",p2:"Если вам нужна настройка мотоцикла на диностенде в Москве, прошивка ECU в России или диагностика производительности модифицированного байка, свяжитесь с 101DYNOLAB через сайт."},
+        seo:{title:"Настройка мотоциклов в Москве",copy:"101DYNOLAB предлагает профессиональную настройку мотоциклов на диностенде, прошивку ECU и диагностику в Москве.",p1:"Мы специализируемся на замерах на диностенде, диагностике с поддержкой AFR и рабочих процессах настройки ECU для современных спортбайков, нейкедов и туристических мотоциклов. Мастерская готовится к решениям на базе Woolich Racing, live data logging и ECU-out flashing для платформ Yamaha, BMW, Suzuki, KTM, Ducati и Honda.",p2:"Если вам нужна настройка мотоцикла на диностенде в Москве, прошивка ECU в России или диагностика производительности модифицированного байка, свяжитесь с 101DYNOLAB через сайт.",certTitle:"Сертифицированные мастера Woolich Racing",certCopy1:"Команда 101DYNOLAB проходит профильное обучение и работает по стандартам Woolich Racing для современных ECU-платформ.",certCopy2:"Это помогает выстраивать предсказуемый процесс диагностики, настройки и подготовки мотоциклов к профессиональной калибровке."},
         footer:"© 2026 101DYNOLAB. Диностенд и настройка ECU для мотоциклов.",
-        alts:{hero:"Мотоцикл на диностенде в 101DYNOLAB",room:"Диностендовая комната и установка мотоцикла",graph:"График диностенда на экране",triumph:"Мотоцикл Triumph на диностенде",laptop:"Ноутбук с результатом диностенда",project1:"Проект мотоцикла в мастерской",bagger:"Кастомный мотоциклетный проект",moto5:"Ducati в мастерской",bmw1:"Проект BMW в мастерской",bmw2:"Деталь проекта BMW",bmw3:"BMW в 101DYNOLAB",ducati1:"Проект Ducati в мастерской",ducati2:"Деталь Ducati в 101DYNOLAB",storefront:"Фасад 101DYNOLAB"},
+        alts:{hero:"Мотоцикл на диностенде в 101DYNOLAB",room:"Диностендовая комната и установка мотоцикла",graph:"График диностенда на экране",triumph:"Мотоцикл Triumph на диностенде",laptop:"Ноутбук с результатом диностенда",project1:"Проект мотоцикла в мастерской",bagger:"Кастомный мотоциклетный проект",moto5:"Ducati в мастерской",bmw1:"Проект BMW в мастерской",bmw2:"Деталь проекта BMW",bmw3:"BMW в 101DYNOLAB",ducati1:"Проект Ducati в мастерской",ducati2:"Деталь Ducati в 101DYNOLAB",storefront:"Фасад 101DYNOLAB",certification:"Сертификат Woolich Racing для 101DYNOLAB"},
         widget:{title:"101DYNOLAB",subtitle:"Диностенд • ECU • Запись",placeholder:"Введите сообщение...",welcome:"Здравствуйте! Я помогу с настройкой мотоцикла, подбором решений и записью на удобный слот.",tooltip:"Вызов ассистента",label:"Открыть ассистента",close:"Скрыть",chips:["Настройка","Замер","Консультация"]}
       },
       uz: {
         meta:{title:"101DYNOLAB - Moskvada mototsikl dynostendi va ECU sozlash",desc:"Moskvada mototsikl dynostendi, ECU flashing va diagnostika. Woolich Racing, AFR sozlash va performance yechimlari.",ogt:"101DYNOLAB - Mototsikl dynostendi va ECU sozlash",ogd:"Moskvada professional mototsikl dynostendi va ECU kalibrovkasi."},
-        lang:{label:"Til"}, nav:{about:"Biz haqimizda",services:"Xizmatlar",gallery:"Galereya",booking:"Yozilish",contact:"Aloqa"},
+        lang:{label:"Til"}, nav:{about:"Biz haqimizda",services:"Xizmatlar",gallery:"Galereya",booking:"Yozilish",contact:"Aloqa",menu:"Menyu"},
         booking:{title:"Yozilish"},
         social:{groupLabel:"101 Dynolab ijtimoiy havolalari",footerTitle:"Biz ijtimoiy tarmoqlarda",ctaCopy:"Dynostend, ECU sozlash yoki maslahat uchun qulay aloqa usulini tanlang.",telegramHint:"Telegram — ustadan tezkor javob",vkHint:"VK — hamjamiyat orqali yozilish",assistantHint:"Assistent — xizmat tanlash va dastlabki maslahat",telegram:"Telegram",vk:"VK",telegramCta:"Telegram orqali yozilish",vkCta:"VK orqali yozilish",assistantCta:"Assistentni ochish"},
         hero:{eyebrow:"Mototsikl dynostendi va ECU sozlash",title:"Moskvada mototsikl dynostendi va ECU sozlash",copy:"Moskvadagi mustaqil ustaxona bo'lib, zamonaviy sport, naked, touring va custom mototsikllar uchun dyno testlari, performance diagnostikasi va ECU kalibrovkasiga ixtisoslashgan.",cta1:"Bog'lanish",cta2:"Ustaxonani ko'rish"},
@@ -373,9 +392,9 @@
         services:{title:"Xizmatlar",copy:"Taxmin emas, aniq raqamlar kerak bo'lgan haydovchilar uchun amaliy performance xizmatlari.",c1t:"Dyno quvvat o'lchovlari",c1c:"Ot kuchi va momentni o'lchang, oldin/keyin taqqoslang va haqiqiy natijani tekshiring.",c2t:"Performance diagnostikasi",c2c:"Yuklama ostida yoqilg'i, javob va uzatish muammolarini aniqlang.",c3t:"Fuel map optimizatsiyasi",c3c:"AFR asosidagi samarali tuning sessiyalari uchun tayyorlangan kalibrovka jarayoni.",c4t:"ECU flash tayyorlov",c4c:"Tanlangan mototsikl platformalarida zamonaviy ECU tuning uchun professional tayyorgarlik."},
         gallery:{title:"Ustaxona va dyno galereyasi",copy:"Ustaxona, dyno ishlari va joriy mototsikl loyihalarining haqiqiy suratlari."},
         contact:{title:"Aloqa",copy:"Moskva, Rossiyadagi ustaxona. Mototsikl dynostendi va ECU sozlash bo'yicha professional xizmatlar.",bizL:"Korxona nomi",bizV:"101DYNOLAB",addrL:"Manzil",addrV:"Moskva shahri, Saltykovskaya ko'chasi, 51",specL:"Ixtisoslashuv",specV:"Mototsikl dynostendi, diagnostika va ECU sozlash",emailL:"Email",phoneL:"Telefon",phoneName:"Pavel",telegramL:"Telegram",vkL:"VK",tradeL:"Hamkorlik bo'yicha murojaatlar",tradeV:"Professional dyno va ECU tuning hamkorliklariga ochiqmiz",caption:"Moskva shahri, Saltykovskaya ko'chasi, 51 dagi ustaxona kirish qismi."},
-        seo:{title:"Moskvada mototsikl tuning",copy:"101DYNOLAB Moskvada mototsikl dynostendi, ECU flashing va diagnostika bo'yicha professional xizmat ko'rsatadi.",p1:"Biz zamonaviy sportbike, naked bike va touring mototsikllar uchun dyno o'lchovlari, AFR bilan diagnostika va ECU tuning jarayonlariga ixtisoslashganmiz. Ustaxona Woolich Racing asosidagi tuning, live data logging va Yamaha, BMW, Suzuki, KTM, Ducati hamda Honda platformalari uchun ECU-out flashing yechimlariga tayyorgarlik ko'rmoqda.",p2:"Agar sizga Moskvada mototsikl dyno tuning, Rossiyada ECU flashing yoki modifikatsiya qilingan bayk uchun performance diagnostikasi kerak bo'lsa, 101DYNOLAB bilan sayt orqali bog'laning."},
+        seo:{title:"Moskvada mototsikl tuning",copy:"101DYNOLAB Moskvada mototsikl dynostendi, ECU flashing va diagnostika bo'yicha professional xizmat ko'rsatadi.",p1:"Biz zamonaviy sportbike, naked bike va touring mototsikllar uchun dyno o'lchovlari, AFR bilan diagnostika va ECU tuning jarayonlariga ixtisoslashganmiz. Ustaxona Woolich Racing asosidagi tuning, live data logging va Yamaha, BMW, Suzuki, KTM, Ducati hamda Honda platformalari uchun ECU-out flashing yechimlariga tayyorgarlik ko'rmoqda.",p2:"Agar sizga Moskvada mototsikl dyno tuning, Rossiyada ECU flashing yoki modifikatsiya qilingan bayk uchun performance diagnostikasi kerak bo'lsa, 101DYNOLAB bilan sayt orqali bog'laning.",certTitle:"Woolich Racing sertifikatlangan ustalar",certCopy1:"101DYNOLAB jamoasi zamonaviy ECU platformalari bo'yicha Woolich Racing standartlari asosida maxsus tayyorgarlikdan o'tadi.",certCopy2:"Bu diagnostika, sozlash va professional kalibrovkaga tayyorlash jarayonini yanada aniqroq tashkil qilishga yordam beradi."},
         footer:"© 2026 101DYNOLAB. Mototsikl dynostendi va ECU sozlash.",
-        alts:{hero:"101DYNOLAB dynosidagi mototsikl",room:"Dyno xonasi va mototsikl o'rnatilishi",graph:"Ekrandagi dyno grafik",triumph:"Dynodagi Triumph mototsikli",laptop:"Dyno natijasi ko'rsatilgan noutbuk",project1:"Ustaxonadagi mototsikl loyihasi",bagger:"Custom mototsikl loyihasi",moto5:"Ustaxonadagi Ducati mototsikli",bmw1:"Ustaxonadagi BMW loyihasi",bmw2:"BMW loyihasi detali",bmw3:"101DYNOLABdagi BMW",ducati1:"Ustaxonadagi Ducati loyihasi",ducati2:"101DYNOLABdagi Ducati detali",storefront:"101DYNOLAB tashqi ko'rinishi"},
+        alts:{hero:"101DYNOLAB dynosidagi mototsikl",room:"Dyno xonasi va mototsikl o'rnatilishi",graph:"Ekrandagi dyno grafik",triumph:"Dynodagi Triumph mototsikli",laptop:"Dyno natijasi ko'rsatilgan noutbuk",project1:"Ustaxonadagi mototsikl loyihasi",bagger:"Custom mototsikl loyihasi",moto5:"Ustaxonadagi Ducati mototsikli",bmw1:"Ustaxonadagi BMW loyihasi",bmw2:"BMW loyihasi detali",bmw3:"101DYNOLABdagi BMW",ducati1:"Ustaxonadagi Ducati loyihasi",ducati2:"101DYNOLABdagi Ducati detali",storefront:"101DYNOLAB tashqi ko'rinishi",certification:"101DYNOLAB uchun Woolich Racing sertifikati"},
         widget:{title:"101DYNOLAB",subtitle:"Dynostend • ECU • Yozilish",placeholder:"Xabaringizni yozing...",welcome:"Salom! Men mototsikl sozlamasi, tyuning variantlari va qulay vaqtga yozilish bo'yicha yordam beraman.",tooltip:"Assistent chaqirish",label:"Assistentni ochish",close:"Yopish",chips:["Sozlash","Dyno o'lchovi","Maslahat"]}
       }
     };
@@ -388,6 +407,7 @@
     (function () {
       let currentLang = initialLang;
       const mq = window.matchMedia("(min-width: 961px)");
+      const mobileMq = window.matchMedia("(max-width: 960px)");
       const widgetCss = document.createElement("style");
       widgetCss.textContent = `
         .smk-chat-header{position:relative;padding-right:92px}
@@ -406,7 +426,7 @@
         @keyframes smkLauncherPulse{0%,100%{opacity:.62;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
         @keyframes smkLauncherFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
         @media (max-width:960px){
-          .smk-chat-launcher{width:190px !important;height:142px !important;padding:0 !important;border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;overflow:visible !important;left:auto !important;right:calc(env(safe-area-inset-right, 0px) + clamp(10px, 3vw, 18px)) !important;bottom:calc(env(safe-area-inset-bottom, 0px) + clamp(10px, 3vw, 18px)) !important;transform:none !important;margin:0 !important}
+          .smk-chat-launcher{width:114px !important;height:85px !important;padding:0 !important;border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;overflow:visible !important;left:auto !important;right:calc(env(safe-area-inset-right, 0px) + clamp(10px, 3vw, 18px)) !important;bottom:calc(env(safe-area-inset-bottom, 0px) + clamp(10px, 3vw, 18px)) !important;transform:none !important;margin:0 !important}
           .smk-chat-widget{width:min(320px,calc(100vw - 24px)) !important;max-width:min(320px,calc(100vw - 24px)) !important;height:min(420px,calc(100vh - 180px)) !important;max-height:min(420px,calc(100vh - 180px)) !important;right:12px !important;left:auto !important;bottom:222px !important;border-radius:20px !important}
           .smk-chat-header{padding-right:88px}
           .smk-chat-launcher-orb-mobile{position:relative;display:block;width:100%;height:100%;border-radius:0}
@@ -420,6 +440,19 @@
 
       function value(path) { return path.split(".").reduce((a, k) => a && a[k], DYNOLAB_I18N[currentLang]); }
       function setNode(node, text) { if ((text || "").includes("<br>")) node.innerHTML = text; else node.textContent = text; }
+      function syncMobileNav(forceOpen) {
+        const panel = document.getElementById("site-nav-panel");
+        const toggle = document.querySelector(".menu-toggle");
+        if (!panel || !toggle) return;
+        if (!mobileMq.matches) {
+          panel.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+          return;
+        }
+        const nextState = typeof forceOpen === "boolean" ? forceOpen : !panel.classList.contains("is-open");
+        panel.classList.toggle("is-open", nextState);
+        toggle.setAttribute("aria-expanded", String(nextState));
+      }
       function trackBookingEvent(name) {
         if (!name) return;
         if (typeof window.ym === "function") {
@@ -464,6 +497,23 @@
         if (assistantButton && assistantButton.dataset.assistantBound !== "true") {
           assistantButton.dataset.assistantBound = "true";
           assistantButton.addEventListener("click", openAssistantWidget);
+        }
+      }
+      function bindMobileNav() {
+        const toggle = document.querySelector(".menu-toggle");
+        const panel = document.getElementById("site-nav-panel");
+        if (!toggle || !panel) return;
+        if (toggle.dataset.navBound !== "true") {
+          toggle.dataset.navBound = "true";
+          toggle.addEventListener("click", () => syncMobileNav());
+        }
+        if (panel.dataset.navBound !== "true") {
+          panel.dataset.navBound = "true";
+          panel.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+              if (mobileMq.matches) syncMobileNav(false);
+            });
+          });
         }
       }
       function syncWidgetText() {
@@ -538,10 +588,13 @@
         applyLanguage();
       });
       mq.addEventListener("change", decorateWidget);
+      mobileMq.addEventListener("change", () => syncMobileNav(false));
       const observer = new MutationObserver(() => { if (decorateWidget()) observer.disconnect(); });
       observer.observe(document.body, { childList: true, subtree: true });
+      bindMobileNav();
       bindBookingActions();
       applyLanguage();
+      syncMobileNav(false);
       decorateWidget();
     })();
   </script>
